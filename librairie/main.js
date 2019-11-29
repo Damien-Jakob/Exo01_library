@@ -87,6 +87,14 @@ Vue.component('filters', {
 Vue.component('filter-element', {
     props: ['filter'],
     template: '#filterElement',
+    methods: {
+        selectFilter() {
+            // TODO remove debug element
+            console.log('filter-element sent filter : ' + this.filter);
+
+            this.$emit('select-filter', this.filter);
+        },
+    },
 });
 
 // Vue
