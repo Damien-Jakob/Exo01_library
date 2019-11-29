@@ -79,6 +79,14 @@ Vue.component('filters', {
             return filters;
         }
     },
+    methods: {
+        // TODO Finish implementing the functionality
+        selectFilter(filter) {
+            if (filter !== 'none') {
+                this.$emit('select-filter', filter);
+            }
+        },
+    },
     template: '#filters',
 });
 
@@ -109,7 +117,7 @@ new Vue({
             "moto",
             "voiture",
             "van",
-            "velo"
+            "velo",
         ],
         filters: [],
         selectedVehicle: null,
@@ -122,7 +130,8 @@ new Vue({
                 return this.vehicles;
             }
 
-            //
+            // return filtered vehicles
+            // filtered : category of the vehicle is in the list of filters
             return this.vehicles.filter(vehicle => this.filters.includes(vehicle.cat));
         },
     },
@@ -139,7 +148,10 @@ new Vue({
         this.selectedVehicle = this.vehicles[0];
 
         // TODO remove test filter
-        this.filters = ['voiture'];
+        this.filters = [
+            'voiture',
+            'moto',
+        ];
     },
 
     methods: {
