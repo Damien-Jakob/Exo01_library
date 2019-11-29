@@ -1,0 +1,95 @@
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Freeride</title>
+
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<header>
+    <div id="title">Freeride</div>
+    Location de vehicules a des prix abordables
+</header>
+<div id="container">
+    <!-- Components -->
+    <filters
+            :vehicle-categories="vehicleCategories"
+    ></filters>
+    <vehicle-list
+            :vehicles="filteredVehicles"
+            @select-vehicle="selectVehicle"
+    ></vehicle-list>
+    <vehicle-detail v-bind:vehicle="selectedVehicle"></vehicle-detail>
+</div>
+
+<!-- Templates -->
+<template id="vehicleList">
+    <div id="menu">
+        <ul>
+            <!-- @ (v-on) : receives event from vehicle-list-item,
+            uses arguments of the $emit,
+            uses the selectVehicle of vehicle-list (not the one of vehicle-list-item
+             -->
+            <vehicle-list-item
+                    v-for="(vehicle, vehicleIndex) in vehicles"
+                    :vehicle="vehicle"
+                    :key="vehicleIndex"
+                    @select-vehicle="selectVehicle"
+            ></vehicle-list-item>
+            <!-- v-bind:key is used to reorder the items if they would change -->
+            <!-- In general, would utilise vehicle.id  -->
+            <!-- In general, a key should be given  -->
+        </ul>
+    </div>
+</template>
+
+<template id="vehicleListItem">
+    <li class="men-itm"
+        @click="selectVehicle"
+    >
+        {{ vehicle.titre }}
+        <i :class="icon" aria-hidden="true"></i>
+    </li>
+</template>
+
+<template id="vehicleDetail">
+    <div id="contenu">
+        <div class="animdroite" id="titre">{{ vehicle.titre }}</div>
+        <div class="animdroite" id="introduction">{{ vehicle.introduction }}</div>
+        <div class="animdroite" id="image">
+            <img :src="vehicle.image" width="400px">
+            <i :class="icon" aria-hidden="true"></i>
+        </div>
+        <div class="animdroite" id="description">
+            {{ vehicle.description }}
+        </div>
+        <button class="animdroite" id="reserver">RESERVER</button>
+    </div>
+</template>
+
+<template id="filters">
+    <div>
+        <ul>
+            <filter-element
+                    v-for="filter in filters"
+                    :filter="filter"
+            ></filter-element>
+        </ul>
+    </div>
+</template>
+
+<template id="filterElement">
+    <li>
+        {{filter}}
+    </li>
+</template>
+
+
+<!-- Vue.js script, must be at the end -->
+<script src="vehicules.js"></script>
+<script src="main.js"></script>
+
+</body>

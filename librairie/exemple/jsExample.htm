@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My first Vue app</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+
+<h1>Vue.js: Introduction aux bases avec exemples</h1>
+
+-------------------------------------------------------------------------------------------------
+
+<h2>Vue, el, data, Binding simple {{}}</h2>
+
+<div id="app">
+    {{ message }}
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!'
+        }
+    });
+</script>
+
+
+-------------------------------------------------------------------------------------------------
+
+<h2>Directive v-for</h2>
+
+<div id="app-4">
+    <ol>
+        <li v-for="todo in todos">
+            {{ todo.text }}
+        </li>
+    </ol>
+</div>
+
+<script type="text/javascript">
+    var app4 = new Vue({
+        el: '#app-4',
+        data: {
+            todos: [
+                {text: 'Learn JavaScript'},
+                {text: 'Learn Vue'},
+                {text: 'Build something awesome'}
+            ]
+        }
+    });
+</script>
+
+-------------------------------------------------------------------------------------------------
+
+<h2>Directive v-on</h2>
+
+<div id="app-5">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">Reverse Message</button>
+</div>
+
+<script type="text/javascript">
+    var app5 = new Vue({
+        el: '#app-5',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            reverseMessage: function () {
+                this.message = this.message.split('').reverse().join('')
+            }
+        }
+    });
+</script>
+
+-------------------------------------------------------------------------------------------------
+
+<h2>Binding double</h2>
+
+<div id="app-6">
+    <p>{{ message }}</p>
+    <input v-model="message">
+</div>
+
+<script type="text/javascript">
+    var app6 = new Vue({
+        el: '#app-6',
+        data: {
+            message: 'Hello Vue!'
+        }
+    });
+</script>
+
+-------------------------------------------------------------------------------------------------
+
+<h2>Propriété computed</h2>
+
+<div id="app7">
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+</div>
+
+<script type="text/javascript">
+    var app7 = new Vue({
+        el: '#app7',
+        data: {
+            message: 'Hello'
+        },
+        computed: {
+            // a computed getter
+            reversedMessage: function () {
+                // `this` points to the vm instance
+                return this.message.split('').reverse().join('')
+            }
+        }
+    });
+</script>
+
+-----------------------------------------------------------------------------------------------
+
+<h2>Propriété computed 2</h2>
+
+<div id="app9">{{ fullName }}</div>
+
+<script type="text/javascript">
+    var app9 = new Vue({
+        el: '#app9',
+        data: {
+            firstName: 'Foo',
+            lastName: 'Bar'
+        },
+        computed: {
+            fullName: function () {
+                return this.firstName + ' ' + this.lastName
+            }
+        }
+    })
+
+</script>
+
+---------------------------------------------------------------------------------------------------
+
+<h2>Binding d'array</h2>
+
+<div id='app10'>
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames }}</span>
+</div>
+
+<script type="text/javascript">
+    new Vue({
+        el: '#app10',
+        data: {
+            checkedNames: []
+        }
+    });
+</script>
+
+---------------------------------------------------------------------------------------------------
+
+<h2>Composant</h2>
+
+<div id="app11">
+    <my-component></my-component>
+</div>
+
+<script type="text/javascript">
+    // register
+    Vue.component('my-component', {
+        template: '<div>A custom component!</div>'
+    });
+
+    // create a root instance
+    new Vue({
+        el: '#app11'
+    });
+</script>
+
+---------------------------------------------------------------------------------------------------
+
+<h2>Prop</h2>
+
+<div id="app12">
+    <ol>
+        <!--
+          Now we provide each todo-item with the todo object
+          it's representing, so that its content can be dynamic.
+          We also need to provide each component with a "key".
+        -->
+        <todo-item
+                v-for="item in groceryList"
+                v-bind:todo="item"
+                v-bind:key="item.id">
+        </todo-item>
+    </ol>
+</div>
+
+<script>
+    Vue.component('todo-item', {
+        props: ['todo'],
+        template: '<li>{{ todo.text }}</li>'
+    })
+
+
+    var app12 = new Vue({
+        el: '#app12',
+        data: {
+            groceryList: [
+                {id: 0, text: 'Vegetables'},
+                {id: 1, text: 'Cheese'},
+                {id: 2, text: 'Whatever else humans are supposed to eat'}
+            ]
+        }
+    })
+
+</script>
+
+------------------------------------------------------------------------------------------------
+
+<h2>Méthodes avec passage de paramètres</h2>
+
+<div id="example-event">
+    <button v-on:click="say('hi')">Say hi</button>
+    <button v-on:click="say('what')">Say what</button>
+</div>
+
+<script>
+    new Vue({
+        el: '#example-event',
+        methods: {
+            say: function (message) {
+                alert(message)
+            }
+        }
+    })
+</script>
+
+------------------------------------------------------------------------------------------------
+
+<h2>Exemple plus complexe : Method, Component, Prop, Array</h2>
+
+<div id="todo-list-example">
+    <input
+            v-model="newTodoText"
+            v-on:keyup.enter="addNewTodo"
+            placeholder="Add a todo"
+    >
+    <ul>
+        <li
+                is="todo-item"
+                v-for="(todo, index) in todos"
+                v-bind:key="todo.id"
+                v-bind:title="todo.title"
+                v-on:remove="todos.splice(index, 1)"
+        ></li>
+    </ul>
+</div>
+
+
+<script>
+
+    Vue.component('todo-item', {
+        template: '<li>{{ title }}<button v-on:click="$emit(\'remove\')">X</button></li>',
+        props: ['title']
+    })
+
+    new Vue({
+        el: '#todo-list-example',
+        data: {
+            newTodoText: '',
+            todos: [
+                {
+                    id: 1,
+                    title: 'Do the dishes',
+                },
+                {
+                    id: 2,
+                    title: 'Take out the trash',
+                },
+                {
+                    id: 3,
+                    title: 'Mow the lawn'
+                }
+            ],
+            nextTodoId: 4
+        },
+        methods: {
+            addNewTodo: function () {
+                this.todos.push({
+                    id: this.nextTodoId++,
+                    title: this.newTodoText
+                })
+                this.newTodoText = ''
+            }
+        }
+    })
+
+</script>
+
+------------------------------------------------------------------------------------------------
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="46434f02-32a2-4582-8045-ebd5edf3b00a" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Ts5t23tVvfnL06tXtoQU9ZQWRh" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/librairie/test" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="P:\Cours\GUI2\Exo01 Librairie\librairie\exemple" />
+      <recent name="P:\Cours\GUI2\Exo01 Librairie\librairie" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="P:\Cours\GUI2\Exo01 Librairie\librairie\test" />
+      <recent name="P:\Cours\GUI2\Exo01 Librairie\librairie" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="46434f02-32a2-4582-8045-ebd5edf3b00a" name="Default Changelist" comment="" />
+      <created>1574236173889</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574236173889</updated>
+      <workItem from="1574236175067" duration="12883000" />
+      <workItem from="1574250086379" duration="2509000" />
+      <workItem from="1574271060440" duration="23000" />
+      <workItem from="1574281514654" duration="2257000" />
+      <workItem from="1574284352573" duration="6944000" />
+      <workItem from="1574319180828" duration="428000" />
+      <workItem from="1574320611193" duration="1579000" />
+      <workItem from="1574322686538" duration="3557000" />
+      <workItem from="1574339469386" duration="1941000" />
+      <workItem from="1574356708661" duration="5800000" />
+      <workItem from="1574838087129" duration="15025000" />
+      <workItem from="1574927652132" duration="2160000" />
+      <workItem from="1574944624101" duration="12000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
