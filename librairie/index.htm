@@ -3,6 +3,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/transition.css">
     <title>Freeride</title>
 
     <!-- Vue.js -->
@@ -51,13 +52,15 @@
 </template>
 
 <template id="vehicleListItem">
-    <li class="men-itm"
-        @click="selectVehicle"
-        v-if="show"
-    >
-        {{ vehicle.titre }}
-        <i :class="icon" aria-hidden="true"></i>
-    </li>
+    <transition name="fade">
+        <li class="men-itm"
+            @click="selectVehicle"
+            v-if="show"
+        >
+            {{ vehicle.titre }}
+            <i :class="icon" aria-hidden="true"></i>
+        </li>
+    </transition>
 </template>
 
 <template id="vehicleDetail">
