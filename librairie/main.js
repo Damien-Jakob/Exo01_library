@@ -37,10 +37,10 @@ let categoryIcon = {
 };
 
 let vehicleMixin = {
+    mixins: [categoryIcon],
     // props : data that must be specified by the parent container
     // (here : <vehicleListItem v-bind:vehicle="...">)
     props: ['vehicle'],
-    mixins: [categoryIcon],
     computed: {
         category() {
             return this.vehicle.cat;
@@ -49,8 +49,8 @@ let vehicleMixin = {
 };
 
 let categoryMixin = {
-    props: ['category'],
     mixins: [categoryIcon],
+    props: ['category'],
 };
 
 // Components
@@ -58,8 +58,8 @@ let categoryMixin = {
 
 // vehicle-list
 Vue.component('vehicle-list', {
-    props: ['vehicles'],
     template: '#vehicleList',
+    props: ['vehicles'],
     methods: {
         selectVehicle(vehicle) {
             this.$emit('select-vehicle', vehicle);
@@ -81,12 +81,13 @@ Vue.component('vehicle-list-item', {
 
 // vehicle-detail
 Vue.component('vehicle-detail', {
-    mixins: [vehicleMixin],
     template: '#vehicleDetail',
+    mixins: [vehicleMixin],
 });
 
 // filters
 Vue.component('filters', {
+    template: '#filters',
     props: ['vehicleCategories'],
     computed: {
         filters() {
@@ -106,14 +107,14 @@ Vue.component('filters', {
             }
         },
     },
-    template: '#filters',
 });
 
 // TODO add computed icon (possibly using a mixin)
 // filter-element
 Vue.component('filter-element', {
-    props: ['filter'],
     template: '#filterElement',
+    mixins: [categoryIcon],
+    props: ['filter'],
     methods: {
         selectFilter() {
             this.$emit('select-filter', this.filter);
