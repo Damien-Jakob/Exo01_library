@@ -3,19 +3,19 @@
 // Mixins
 // Elements reused by multiple components
 /**
- * Expect a category data/propz/computed
- * Never uze thiz directly in component. It Zhould be uzed in another mixin, which
+ * Expect a iconCategory data/props/computed
+ * Never uze this directly in component. It Zhould be used in another mixin, which
  */
 let categoryIcon = {
     computed: {
         /**
-         * Get the icon corresponding to a vehicle
-         * @returns {string} the class of the icon of the vehicle
+         * Get the icon corresponding to iconCategory
+         * @returns {string} the class of the icon
          */
         icon() {
             let icon = '';
             // check the category of the vehicle
-            switch (this.category) {
+            switch (this.iconCategory) {
                 case "moto":
                     icon = 'fa fa-motorcycle my-darkblue';
                     break;
@@ -42,15 +42,20 @@ let vehicleMixin = {
     // (here : <vehicleListItem v-bind:vehicle="...">)
     props: ['vehicle'],
     computed: {
-        category() {
+        iconCategory() {
             return this.vehicle.cat;
         },
     },
 };
 
-let categoryMixin = {
+let filterMixin = {
     mixins: [categoryIcon],
-    props: ['category'],
+    props: ['filter'],
+    computed: {
+        iconCategory() {
+            return this.filter;
+        },
+    },
 };
 
 // Components
@@ -113,8 +118,7 @@ Vue.component('filters', {
 // filter-element
 Vue.component('filter-element', {
     template: '#filterElement',
-    mixins: [categoryIcon],
-    props: ['filter'],
+    mixins: [filterMixin],
     methods: {
         selectFilter() {
             this.$emit('select-filter', this.filter);
