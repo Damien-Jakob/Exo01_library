@@ -1,4 +1,4 @@
-// TODO : create a transition
+// TODO : create a transition-group
 
 // Rem : we don't use the vehicle ids, because we use their index
 
