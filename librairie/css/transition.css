@@ -1,4 +1,6 @@
-/*  Element entering/leaving the list */
+/*  Element entering/leaving the list
+*   Corresponds to the name "list" of the transition
+*/
 .list-enter-active, .list-leave-active {
     transition: opacity .5s;
 }
