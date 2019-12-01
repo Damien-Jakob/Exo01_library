@@ -33,17 +33,22 @@
 <template id="vehicleList">
     <div id="menu">
         <ul>
-            <!-- @ (v-on) : receives event from vehicle-list-item,
-            uses arguments of the $emit,
-            uses the selectVehicle of vehicle-list (not the one of vehicle-list-item
-             -->
-            <vehicle-list-item
-                    v-for="(vehicle, vehicleIndex) in vehicles"
-                    :vehicle="vehicle"
-                    :key="vehicleIndex"
-                    :filters="filters"
-                    @select-vehicle="selectVehicle"
-            ></vehicle-list-item>
+            <transition-group name="list" tag="div">
+                <span
+                        v-for="(vehicle, vehicleIndex) in vehicles"
+                        :key="vehicleIndex"
+                >
+                <!-- @ (v-on) : receives event from vehicle-list-item,
+                uses arguments of the $emit,
+                uses the selectVehicle of vehicle-list (not the one of vehicle-list-item
+                 -->
+                    <vehicle-list-item
+                            :vehicle="vehicle"
+                            :filters="filters"
+                            @select-vehicle="selectVehicle"
+                    ></vehicle-list-item>
+                </span>
+            </transition-group>
             <!-- v-bind:key is used to reorder the items if they would change -->
             <!-- In general, would utilise vehicle.id  -->
             <!-- In general, a key should be given  -->
@@ -52,15 +57,13 @@
 </template>
 
 <template id="vehicleListItem">
-    <transition name="fade">
-        <li class="men-itm"
-            @click="selectVehicle"
-            v-if="show"
-        >
-            {{ vehicle.titre }}
-            <i :class="icon" aria-hidden="true"></i>
-        </li>
-    </transition>
+    <li class="men-itm"
+        @click="selectVehicle"
+        v-if="show"
+    >
+        {{ vehicle.titre }}
+        <i :class="icon" aria-hidden="true"></i>
+    </li>
 </template>
 
 <template id="vehicleDetail">
