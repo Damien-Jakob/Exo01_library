@@ -153,8 +153,10 @@ new Vue({
 
         vehicleCategories() {
             let categories = [];
+            // foreach vehicle
             this.vehicles.forEach((vehicle, index) => {
-                if(!categories.includes(vehicle.cat)) {
+                // add the category of the vehicle to the list if it haz not been added yet
+                if (!categories.includes(vehicle.cat)) {
                     categories.push(vehicle.cat);
                 }
             });
@@ -197,7 +199,6 @@ new Vue({
                 this.filters = this.filters.filter(filter => filter !== filterValue);
                 // I heard you liked filters, zo I added filters to your filters
             }
-
         },
 
         /**
