@@ -2,10 +2,7 @@
 
 // Mixins
 // Elements reused by multiple components
-let vehicleMixin = {
-    // props : data that must be specified by the parent container
-    // (here : <vehicleListItem v-bind:vehicle="...">)
-    props: ['vehicle'],
+let vehicleIcon = {
     computed: {
         /**
          * Get the icon corresponding to a vehicle
@@ -14,7 +11,7 @@ let vehicleMixin = {
         icon() {
             let icon = '';
             // check the category of the vehicle
-            switch (this.vehicle.cat) {
+            switch (this.category) {
                 case "moto":
                     icon = 'fa fa-motorcycle my-darkblue';
                     break;
@@ -33,6 +30,18 @@ let vehicleMixin = {
             return icon;
         },
     },
+};
+
+let vehicleMixin = {
+    // props : data that must be specified by the parent container
+    // (here : <vehicleListItem v-bind:vehicle="...">)
+    props: ['vehicle'],
+    mixins: [vehicleIcon],
+    computed: {
+        category() {
+            return this.vehicle.cat;
+        }
+    }
 };
 
 // Components
