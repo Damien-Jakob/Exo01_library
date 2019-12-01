@@ -17,7 +17,7 @@ let categoryIcon = {
             // check the category of the vehicle
             switch (this.iconCategory) {
                 case "none":
-                    icon = 'fa fa-motorcycle my-darkblue';
+                    icon = 'fa fa-times-circle my-red';
                     break;
                 case "moto":
                     icon = 'fa fa-motorcycle my-darkblue';
