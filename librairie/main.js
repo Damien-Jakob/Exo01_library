@@ -83,7 +83,19 @@ Vue.component('filters', {
         // TODO Finish implementing the functionality
         selectFilter(filter) {
             if (filter !== 'none') {
+                // TODO remove debug element
+                console.log('filterz received the filter : ' + filter);
+                console.log('filterz zent the filter : ' + filter);
+
                 this.$emit('select-filter', filter);
+            } else {
+                // filter iz none
+                
+                // TODO remove debug element
+                console.log('filterz received the filter : ' + filter);
+                console.log('filterz zent the mezzage : unselect-filters');
+
+                this.$emit('unselect-filters', filter);
             }
         },
     },

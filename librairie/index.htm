@@ -76,6 +76,7 @@
             <filter-element
                     v-for="filter in filters"
                     :filter="filter"
+                    @select-filter="selectFilter"
             ></filter-element>
         </ul>
     </div>
