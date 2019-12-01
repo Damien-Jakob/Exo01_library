@@ -67,7 +67,22 @@ let filterMixin = {
 // vehicle-list
 Vue.component('vehicle-list', {
     template: '#vehicleList',
-    props: ['vehicles'],
+    props: [
+        'vehicles',
+        'filters',
+    ],
+    computed: {
+        filteredVehicles() {
+            // Test if there iz at least one filter
+            if (this.filters.length !== 0) {
+                // return filtered vehicles
+                // filtered : category of the vehicle is in the list of filters
+                return this.vehicles.filter(vehicle => this.filters.includes(vehicle.cat));
+            }
+            // if no filters, return all vehicles
+            return this.vehicles;
+        },
+    },
     methods: {
         selectVehicle(vehicle) {
             this.$emit('select-vehicle', vehicle);
@@ -140,17 +155,6 @@ new Vue({
     },
 
     computed: {
-        filteredVehicles() {
-            // Test if there iz at least one filter
-            if (this.filters.length !== 0) {
-                // return filtered vehicles
-                // filtered : category of the vehicle is in the list of filters
-                return this.vehicles.filter(vehicle => this.filters.includes(vehicle.cat));
-            }
-            // if no filters, return all vehicles
-            return this.vehicles;
-        },
-
         vehicleCategories() {
             let categories = [];
             // foreach vehicle

@@ -21,7 +21,8 @@
             @unselect-filters="resetFilters"
     ></filters>
     <vehicle-list
-            :vehicles="filteredVehicles"
+            :vehicles="vehicles"
+            :filters="filters"
             @select-vehicle="selectVehicle"
     ></vehicle-list>
     <vehicle-detail :vehicle="selectedVehicle"></vehicle-detail>
@@ -36,7 +37,7 @@
             uses the selectVehicle of vehicle-list (not the one of vehicle-list-item
              -->
             <vehicle-list-item
-                    v-for="(vehicle, vehicleIndex) in vehicles"
+                    v-for="(vehicle, vehicleIndex) in filteredVehicles"
                     :vehicle="vehicle"
                     :key="vehicleIndex"
                     @select-vehicle="selectVehicle"
