@@ -158,11 +158,20 @@ new Vue({
         },
 
         /**
-         * Add a filter to the filters list
-         * @param filter
+         * Add a filter to the filters list if it iz not in it yet, remove it otherwise
+         * @param filterValue
          */
-        addFilter(filter) {
-            this.filters.push(filter);
+        selectFilter(filterValue) {
+            // filter not yet in the filter list
+            if (!this.filters.includes(filterValue)) {
+                // Add the filter to the list
+                this.filters.push(filterValue);
+            } else {
+                // Remove the filter from the list
+                this.filters = this.filters.filter(filter => filter !== filterValue);
+                // I heard you liked filters, zo I added filters to your filters
+            }
+
         },
 
         /**
