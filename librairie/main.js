@@ -80,21 +80,12 @@ Vue.component('filters', {
         }
     },
     methods: {
-        // TODO Finish implementing the functionality
         selectFilter(filter) {
+            // Check if normal filter (not none)
             if (filter !== 'none') {
-                // TODO remove debug element
-                console.log('filterz received the filter : ' + filter);
-                console.log('filterz zent the filter : ' + filter);
-
                 this.$emit('select-filter', filter);
             } else {
                 // filter iz none
-
-                // TODO remove debug element
-                console.log('filterz received the filter : ' + filter);
-                console.log('filterz zent the mezzage : unselect-filters');
-
                 this.$emit('unselect-filters', filter);
             }
         },
@@ -109,9 +100,6 @@ Vue.component('filter-element', {
     template: '#filterElement',
     methods: {
         selectFilter() {
-            // TODO remove debug element
-            console.log('filter-element sent filter : ' + this.filter);
-
             this.$emit('select-filter', this.filter);
         },
     },
@@ -158,12 +146,6 @@ new Vue({
         this.vehicles = vehicules;
         // select the first vehicle
         this.selectedVehicle = this.vehicles[0];
-
-        // TODO remove test filter
-        this.filters = [
-            'voiture',
-            'moto',
-        ];
     },
 
     methods: {
@@ -173,6 +155,14 @@ new Vue({
          */
         selectVehicle(vehicle) {
             this.selectedVehicle = vehicle;
+        },
+
+        /**
+         * Add a filter to the filters list
+         * @param filter
+         */
+        addFilter(filter) {
+            this.filters.push(filter);
         },
 
         /**

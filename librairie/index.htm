@@ -17,6 +17,7 @@
     <!-- Components -->
     <filters
             :vehicle-categories="vehicleCategories"
+            @select-filter="addFilter"
             @unselect-filters="resetFilters"
     ></filters>
     <vehicle-list
