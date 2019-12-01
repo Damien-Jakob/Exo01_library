@@ -44,11 +44,9 @@ Vue.component('vehicle-list', {
     template: '#vehicleList',
     methods: {
         selectVehicle(vehicle) {
-            console.log('vehicle-list received select-vehicle');
-            console.dir(vehicle);
             this.$emit('select-vehicle', vehicle);
-        }
-    }
+        },
+    },
 });
 
 // vehicle-list-item
@@ -77,7 +75,7 @@ Vue.component('filters', {
             let filters = ['none'];
             filters = filters.concat(this.vehicleCategories);
             return filters;
-        }
+        },
     },
     methods: {
         selectFilter(filter) {
