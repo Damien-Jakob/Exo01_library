@@ -115,8 +115,7 @@ Vue.component('vehicle-list-item', {
             this.$emit('select-vehicle', this.vehicle);
         },
     },
-})
-;
+});
 
 // vehicle-detail
 Vue.component('vehicle-detail', {
@@ -227,5 +226,5 @@ new Vue({
         resetFilters() {
             this.filters = []
         },
-    }
+    },
 });
