@@ -90,7 +90,7 @@ Vue.component('filters', {
                 this.$emit('select-filter', filter);
             } else {
                 // filter iz none
-                
+
                 // TODO remove debug element
                 console.log('filterz received the filter : ' + filter);
                 console.log('filterz zent the mezzage : unselect-filters');
@@ -137,14 +137,14 @@ new Vue({
 
     computed: {
         filteredVehicles() {
-            // if no filters, return all vehicles
-            if (this.filters === []) {
-                return this.vehicles;
+            // Test if there iz at least one filter
+            if (this.filters.length !== 0) {
+                // return filtered vehicles
+                // filtered : category of the vehicle is in the list of filters
+                return this.vehicles.filter(vehicle => this.filters.includes(vehicle.cat));
             }
-
-            // return filtered vehicles
-            // filtered : category of the vehicle is in the list of filters
-            return this.vehicles.filter(vehicle => this.filters.includes(vehicle.cat));
+            // if no filters, return all vehicles
+            return this.vehicles;
         },
     },
 
@@ -167,8 +167,19 @@ new Vue({
     },
 
     methods: {
+        /**
+         * Change the selected vehicle
+         * @param vehicle
+         */
         selectVehicle(vehicle) {
             this.selectedVehicle = vehicle;
-        }
+        },
+
+        /**
+         * Reset the Filters to an empty list
+         */
+        resetFilters() {
+            this.filters = []
+        },
     }
 });
