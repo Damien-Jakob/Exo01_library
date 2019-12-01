@@ -135,13 +135,6 @@ new Vue({
 
     data: {
         vehicles: [],
-        // TODO vehicleCategories -> computed
-        vehicleCategories: [
-            "moto",
-            "voiture",
-            "van",
-            "velo",
-        ],
         filters: [],
         selectedVehicle: null,
     },
@@ -156,6 +149,16 @@ new Vue({
             }
             // if no filters, return all vehicles
             return this.vehicles;
+        },
+
+        vehicleCategories() {
+            let categories = [];
+            this.vehicles.forEach((vehicle, index) => {
+                if(!categories.includes(vehicle.cat)) {
+                    categories.push(vehicle.cat);
+                }
+            });
+            return categories;
         },
     },
 
