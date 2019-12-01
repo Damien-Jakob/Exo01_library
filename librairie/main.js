@@ -72,6 +72,10 @@ Vue.component('vehicle-list', {
         'filters',
     ],
     computed: {
+        /**
+         * Not useful anymore, but kept because interesting
+         * @returns array of vehicles filtered
+         */
         filteredVehicles() {
             // Test if there iz at least one filter
             if (this.filters.length !== 0) {
@@ -92,15 +96,27 @@ Vue.component('vehicle-list', {
 
 // vehicle-list-item
 Vue.component('vehicle-list-item', {
-    mixins: [vehicleMixin],
     template: '#vehicleListItem',
+    mixins: [vehicleMixin],
+    props: ['filters'],
+    computed: {
+        show() {
+            // Test if there iz at least one filter
+            if (this.filters.length !== 0) {
+                return this.filters.includes(this.vehicle.cat);
+            }
+            // if no filters, display the vehicle
+            return true;
+        },
+    },
     methods: {
         selectVehicle() {
             console.log('vehicle-list-item sent select-vehicle');
             this.$emit('select-vehicle', this.vehicle);
         },
     },
-});
+})
+;
 
 // vehicle-detail
 Vue.component('vehicle-detail', {
