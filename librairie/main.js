@@ -2,7 +2,11 @@
 
 // Mixins
 // Elements reused by multiple components
-let vehicleIcon = {
+/**
+ * Expect a category data/propz/computed
+ * Never uze thiz directly in component. It Zhould be uzed in another mixin, which
+ */
+let categoryIcon = {
     computed: {
         /**
          * Get the icon corresponding to a vehicle
@@ -36,12 +40,17 @@ let vehicleMixin = {
     // props : data that must be specified by the parent container
     // (here : <vehicleListItem v-bind:vehicle="...">)
     props: ['vehicle'],
-    mixins: [vehicleIcon],
+    mixins: [categoryIcon],
     computed: {
         category() {
             return this.vehicle.cat;
-        }
-    }
+        },
+    },
+};
+
+let categoryMixin = {
+    props: ['category'],
+    mixins: [categoryIcon],
 };
 
 // Components
