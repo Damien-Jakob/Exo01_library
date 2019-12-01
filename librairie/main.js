@@ -16,6 +16,9 @@ let categoryIcon = {
             let icon = '';
             // check the category of the vehicle
             switch (this.iconCategory) {
+                case "none":
+                    icon = 'fa fa-motorcycle my-darkblue';
+                    break;
                 case "moto":
                     icon = 'fa fa-motorcycle my-darkblue';
                     break;
@@ -114,7 +117,6 @@ Vue.component('filters', {
     },
 });
 
-// TODO add computed icon (possibly using a mixin)
 // filter-element
 Vue.component('filter-element', {
     template: '#filterElement',
