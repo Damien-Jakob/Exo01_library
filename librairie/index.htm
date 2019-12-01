@@ -35,8 +35,8 @@
         <ul>
             <transition-group name="list" tag="div">
                 <span
-                        v-for="(vehicle, vehicleIndex) in vehicles"
-                        :key="vehicleIndex"
+                        v-for="(vehicle, vehicleIndex) in filteredVehicles"
+                        :key="vehicle.id"
                 >
                 <!-- @ (v-on) : receives event from vehicle-list-item,
                 uses arguments of the $emit,
@@ -59,7 +59,6 @@
 <template id="vehicleListItem">
     <li class="men-itm"
         @click="selectVehicle"
-        v-if="show"
     >
         {{ vehicle.titre }}
         <i :class="icon" aria-hidden="true"></i>
