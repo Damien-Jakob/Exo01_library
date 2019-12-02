@@ -1,5 +1,3 @@
-// TODO : add transition for moving elements
-
 // Rem : we don't use the vehicle ids, because we use their index
 
 // Mixins
